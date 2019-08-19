@@ -1,0 +1,13 @@
+modelos
+	osi
+	tcp/ip
+	
+modelo osi
+	capas:
+		fisica
+		data link
+		red
+		transporte
+		sesion
+		presentación
+		aplicación
