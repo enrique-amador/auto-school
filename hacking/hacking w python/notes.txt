@@ -4,10 +4,26 @@ modelos
 	
 modelo osi
 	capas:
-		fisica
-		data link
-		red
-		transporte
-		sesion
-		presentación
-		aplicación
+		7 aplicación
+			maneja la interacción con el usuario
+			datagrama: data
+		6 presentación
+			los datos son formateados y encriptados	
+		5 sesion
+			mantiene la comunicación extremo a extremo
+			datagrama: data
+		4 transporte
+			datagrama: segmento (porque rompe la petición en varias fracciones)
+			añade control de flujo número de puerto de funte y destino
+			añade confiabilidad con un numero secuencial
+		3 red
+			datagrama: paquete
+			añade direcciones ip fuente y destino
+		2 data link
+			añade fuente y destino de direcciones MAC
+			datagrama: frame
+			Frame Check System (FCS): verifica frame por frames si las peticiones alcanzaron el destino correcto
+		1 fisica
+			datagrama: bits y bytes
+		
+bookmark: Chapter 8: General Syntaxes
