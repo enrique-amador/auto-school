@@ -1,0 +1,188 @@
+Clean Code - Robert C. Martin
+
+1. Clean Code
+
+We know good code matters because we’ve had to deal for so long with its lack.
+
+Of course you have been impeded by bad code. So then—why did you write it?
+
+We’ve all felt the relief of seeing our messy program work and deciding that a working mess is better than nothing. We’ve all said we’d go back and clean it up later. Of course, in those days we didn’t know LeBlanc’s law: Later equals never
+
+	The Total Cost of Owning a Mess
+	- As the mess builds, the productivity of the team continues to decrease
+
+	The Grand Redesign in the Sky
+	-  keeping your code clean is not just cost effective; it’s a matter of professional survival.
+
+	Attitude
+	- But the fault, dear Dilbert, is not in our stars, but in ourselves. We are unprofessional.
+
+	- Most managers want good code, even when they are obsessing about the schedule. They may defend the schedule and requirements with passion; but that’s their job. It’s your job to defend the code with equal passion.
+
+	- it is unprofessional for programmers to bend to the will of managers who don’t understand the risks of making messes.
+
+	The Primal Conundrum
+	- The only way to make the deadline—the only way to go fast—is to keep the code as clean as possible at all times.
+
+	The Art of Clean Code?
+	- being able to recognize clean code from dirty code does not mean that we know how to write clean code!
+
+	- Writing clean code requires the disciplined use of a myriad little techniques applied through a painstakingly acquired sense of “cleanliness.” This “code-sense” is the key.
+
+	- a programmer who writes clean code is an artist who can take a blank screen through a series of transformations until it is an elegantly coded system.
+
+	What Is Clean Code?
+
+	- Bjarne Stroustrup, inventor of C++.
+	- I like my code to be elegant and efficient.
+	- Clean code does one thing well.
+	- Bad code tempts the mess to grow! When others change bad code, they tend to make it worse.
+	-  Clean code is focused. Each function, each class, each module exposes a single-minded attitude that remains entirely undistracted, and unpolluted, by the surrounding details.
+
+	Grady Booch, author of Object Oriented Analysis 
+	- Clean code reads like well-written prose.
+	- Think back on a really good book that you’ve read. Remember how the words disappeared to be replaced by images! 
+	- Like a good novel, clean code should clearly expose the tensions in the problem to be solved. 
+
+	“Big” Dave Thomas, founder of OTI
+	- Clean code can be read, and enhanced by a developer other than its original author. It has unit and acceptance tests. It has meaningful names. It provides one way rather than many ways for doing one thing. It has minimal dependencies,
+	- Dave is right. Code, without tests, is not clean.
+	- Smaller is better.
+
+	Michael Feathers, author of Working Effectively with Legacy Code
+	- Clean code always looks like it was written by someone who cares. There is nothing obvious that you can do to make it better
+
+	Ron Jeffries, author of Extreme Programming Installed 
+	- Runs all the tests;
+	- Contains no duplication;
+		- When the same thing is done over and over, it’s a sign that there is an idea in our mind that is not well represented in the code.
+	- Expresses all the design ideas that are in the system (meaningful names);
+	- Minimizes the number of entities such as classes, methods, functions, and the like.
+	- early building of simple abstractions. One example is “find things in a collection.” I will often wrap the particular implementation in a more abstract method or class. 1) I can change the implementation any time I want, and 2) the collection abstraction often calls my attention to what’s “really” going on.
+
+	Ward Cunningham, inventor of Wiki
+	- each routine you read turns out to be pretty much what you expected
+	- [code ] obvious, simple, and compelling
+
+	Schools of Thought
+	- None of these different schools is absolutely right. Yet within a particular school we act as though the teachings and techniques are right. 
+
+	We Are Authors
+	- The next time you write a line of code, remember you are an author, writing for readers who will judge your effort. 
+	-  Indeed, the ratio of time spent reading vs. writing is well over 10:1. We are constantly reading old code as part of the effort to write new code.
+	- making it easy to read actually makes it easier to write
+	- You cannot write code if you cannot read the surrounding code. 
+
+	The Boy Scout Rule
+	- It’s not enough to write the code well. The code has to be kept clean over time.
+	- Leave the [code] cleaner than you found it.
+	- The cleanup doesn’t have to be something big. Change one variable name for the better, break up one function that’s a little too large, eliminate one small bit of duplication, ...
+
+	Conclusion
+	- this book cannot promise to make you a good programmer. It cannot promise to give you “code-sense.”
+	- You’ll see lists of heuristics, disciplines, and techniques. You’ll see example after example. After that, it’s up to you. 
+	- Practice.
+
+2. Meaningful Names
+- What follows are some simple rules for creating good names.
+
+	Use Intention-Revealing Names
+	- Choosing good names takes time but saves more than it takes.
+
+	- The name of a variable, function, or class, should answer all the big questions. It should tell you why it exists, what it does, and how it is used. If a name requires a comment, then the name does not reveal its intent. 
+
+	- The problem isn’t the simplicity of the code but the implicity of the code: the degree to which the context is not explicit in the code itself. 
+
+	Avoid Disinformation
+	- Programmers must avoid leaving false clues that obscure the meaning of code
+	- Beware of using names which vary in small ways.
+	- Using inconsistent spellings is disinformation.
+
+	Make Meaningful Distinctions
+	- Programmers create problems for themselves when they write code solely to satisfy a compiler or interpreter. 
+	- For example, because you can’t use the same name to refer to two different things in the same scope
+	- If names must be different, then they should also mean something different.
+	- Number-series naming (a1, a2, .. aN): this names are not disinformative, they are noninformative.
+	- Distinguish names in such a way that the reader knows what the differences offer.
+
+	Use Pronounceable Names
+	- It would be a shame not to take advantage of that huge portion of our brains that has evolved to deal with spoken language.
+	- So make your names pronounceable.
+	- This matters because programming is a social activity
+
+	Use Searchable Names
+	- Single-letter names and numeric constants have a particular problem in that they are not easy to locate across a body of text.
+	- single-letter names can ONLY be used as local variables inside short methods
+	- The length of a name should correspond to the size of its scope
+
+	Avoid Encodings
+	- Encoding type or scope information into names simply adds an extra burden of deciphering. 
+	- Fortran forced encodings by making the first letter a code for the type. Early versions of BASIC allowed only a letter plus one digit. 
+	- In modern languages we have much richer type systems, and the compilers remember and enforce the types. 
+
+	Member Prefixes
+	- You also don’t need to prefix member variables with m_ anymore. Your classes and functions should be small enough that you don’t need them.
+
+	Interfaces and Implementations
+	- These are sometimes a special case for encodings.
+	-  So if I must encode either the interface or the implementation, I choose the implementation. Calling it ShapeFactoryImp.
+
+	Avoid Mental Mapping
+	- In most contexts a single-letter name is a poor choice; it’s just a place holder that the reader must mentally map to the actual concept.
+
+	Class Names
+	- Classes and objects should have noun or noun phrase.
+	- A class name should not be a verb.
+
+	Method Names
+	- Methods should have verb or verb phrase.
+	- Accessors, mutators, and predicates should be named for their value and prefixed with get, set, and is.
+	- When constructors are overloaded, use static factory methods with names that describe the arguments.
+
+	Don’t Be Cute
+	- Choose clarity over entertainment value.
+
+	Pick One Word per Concept
+	- Pick one word for one abstract concept and stick with it.
+	- For instance, it’s confusing to have fetch, retrieve, and get as equivalent methods of different classes.
+	- What is the essential difference between a DeviceManager and a ProtocolController?
+	- A consistent lexicon is a great boon to the programmers who must use your code. 
+
+	Don’t Pun
+	- Avoid using the same word for two purposes.
+	- As long as the parameter lists and return values of the various add methods are semantically equivalent, all is well
+
+	Use Solution Domain Names
+	- use computer science (CS) terms, algorithm names, pattern names, math terms, and so forth.
+	- It is not wise to draw every name from the problem domain
+
+	Use Problem Domain Names
+	- Separating solution and problem domain concepts is part of the job of a good programmer and designer.
+	- The code that has more to do with problem domain concepts should have names drawn from the problem domain.
+
+	Add Meaningful Context
+	- you need to place names in context for your reader by enclosing them in well-named classes, functions, or namespaces. 
+	- When all else fails, then prefixing the name may be necessary as a last resort.
+
+	Don’t Add Gratuitous Context
+	- Shorter names are generally better than longer ones, so long as they are clear.
+	- Add no more context to a name than is necessary.
+
+	Final Words
+	- You will probably end up surprising someone when you rename, just like you might with any other code improvement. Don’t let it stop you in your tracks
+
+3. Functions
+- In the early days of programming we composed our systems of routines and subroutines.
+- Then, in the era of Fortran and PL/1 we composed our systems of programs, subprograms, and functions.
+- Nowadays only the function survives. Functions are the first line of organization in any program. 
+
+	Small!
+	- The first rule of functions is that they should be small.
+	- The second rule of functions is that they should be smaller than that. 
+	
+
+
+Referencias:
+
+
+- https://refactoring.guru/extract-method Refactorización y Patrones de Diseño!
